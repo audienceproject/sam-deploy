@@ -1,0 +1,25 @@
+name: sam-deploy
+version: 1.0.0
+description: Deploys sam template
+keywords:
+  - sam
+  - deploy
+properties:
+  template:
+    type: string
+    required: true
+  s3-bucket:
+    type: string
+    required: true
+  s3-prefix:
+    type: string
+    required: true
+  stack-name:
+    type: string
+    required: true
+  region:
+    type: string
+    required: true
+  tags:
+    type: string
+    required: true
