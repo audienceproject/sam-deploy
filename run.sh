@@ -80,7 +80,7 @@ echo "Using the following parameter overrides: ${PARAMETERS}"
 
 ## actually deploy the CF template
 sam deploy \
-    --region $WERCKER_SAM_DEPLOY_STACK_REGION \
+    --region $WERCKER_SAM_DEPLOY_REGION \
 	--template-file $SAM_PACKAGED_OUTPUT \
 	--stack-name $WERCKER_SAM_DEPLOY_STACK_NAME \
 	--capabilities CAPABILITY_IAM \
