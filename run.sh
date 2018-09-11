@@ -1,23 +1,23 @@
 #!/bin/bash
-if [[ ! -z $WERCKER_SAM_DEPLOY_STACK_REGION || -z $WERCKER_SAM_DEPLOY_STACK_NAME ]]; then
+if [[  -z $WERCKER_SAM_DEPLOY_STACK_REGION || -z $WERCKER_SAM_DEPLOY_STACK_NAME ]]; then
         echo "Please set deploy stack region and name "
         exit 1
 fi
-if [[ ! -z $WERCKER_SAM_DEPLOY_TEMPLATE ]]; then
+if [[  -z $WERCKER_SAM_DEPLOY_TEMPLATE ]]; then
 	echo "Please set template"
 	exit 1
 fi
-if [[ ! -z $WERCKER_SAM_DEPLOY_S3_BUCKET ]]; then
+if [[  -z $WERCKER_SAM_DEPLOY_S3_BUCKET ]]; then
 	echo "Please set s3 bucket"
 	exit 1
 fi
 
-if [[ ! -z $WERCKER_SAM_DEPLOY_S3_PREFIX ]]; then
+if [[  -z $WERCKER_SAM_DEPLOY_S3_PREFIX ]]; then
 	echo "Please set s3 prefix"
 	exit 1
 fi
 
-if [[ ! -z $WERCKER_SAM_DEPLOY_TAGS ]]; then
+if [[  -z $WERCKER_SAM_DEPLOY_TAGS ]]; then
 	echo "Please set tags"
 	exit 1
 fi
