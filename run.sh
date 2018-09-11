@@ -58,7 +58,7 @@ function parse_yaml_for_parameters {
         tail =  vname[1]
         while ( match(tail,/[A-Z]/) ) {
             tgt = substr(tail,RSTART,1)
-            if ( substr(tail,RSTART-1,1) ~ /[a-z]/ ) {
+            if ( substr(tail,RSTART-1,1) ~ /[a-z0-9]/ ) {
                 tgt = "_" tolower(tgt)
             }
             head = head substr(tail,1,RSTART-1) tgt
