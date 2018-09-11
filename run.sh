@@ -84,5 +84,5 @@ sam deploy \
 	--template-file $SAM_PACKAGED_OUTPUT \
 	--stack-name $WERCKER_SAM_DEPLOY_STACK_NAME \
 	--capabilities CAPABILITY_IAM \
-	--tags $WERCKER_SAM_DEPLOY_TAGS \
-	--parameter-overrides $PARAMETERS
+	--parameter-overrides $PARAMETERS \
+	--tags $WERCKER_SAM_DEPLOY_TAGS
