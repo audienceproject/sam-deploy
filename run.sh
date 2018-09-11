@@ -1,5 +1,5 @@
 #!/bin/bash
-if [[  -z $WERCKER_SAM_DEPLOY_STACK_REGION || -z $WERCKER_SAM_DEPLOY_STACK_NAME ]]; then
+if [[  -z $WERCKER_SAM_DEPLOY_REGION || -z $WERCKER_SAM_DEPLOY_STACK_NAME ]]; then
         echo "Please set deploy stack region and name "
         exit 1
 fi
