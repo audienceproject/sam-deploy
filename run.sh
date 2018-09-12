@@ -22,8 +22,8 @@ if [[  -z $WERCKER_SAM_DEPLOY_TAGS ]]; then
 	exit 1
 fi
 
-LC_ALL=C.UTF-8
-LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
 
 SAM_PACKAGED_OUTPUT=sam-packaged.yaml
 
