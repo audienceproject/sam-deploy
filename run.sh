@@ -84,4 +84,5 @@ sam deploy \
 	--stack-name $WERCKER_SAM_DEPLOY_STACK_NAME \
 	--capabilities CAPABILITY_IAM \
 	--parameter-overrides $PARAMETERS \
+	--no-fail-on-empty-changeset \
 	--tags $WERCKER_SAM_DEPLOY_TAGS
