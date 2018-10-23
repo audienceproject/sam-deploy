@@ -42,7 +42,7 @@ cat $SAM_PACKAGED_OUTPUT
 ## corresponding envvar: DYNAMODB_TABLE
 ##
 function parse_yaml_for_parameters {
-   
+
    local prefix=$2
    local s='[[:space:]]*' w='[a-zA-Z0-9_]*' fs=$(echo @|tr @ '\034')
    sed -ne "s|^\($s\):|\1|" \
@@ -82,7 +82,7 @@ sam deploy \
     --region $WERCKER_SAM_DEPLOY_REGION \
 	--template-file $SAM_PACKAGED_OUTPUT \
 	--stack-name $WERCKER_SAM_DEPLOY_STACK_NAME \
-	--capabilities CAPABILITY_IAM \
+	--capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
 	--parameter-overrides $PARAMETERS \
 	--no-fail-on-empty-changeset \
 	--tags $WERCKER_SAM_DEPLOY_TAGS
