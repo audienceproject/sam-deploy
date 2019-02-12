@@ -66,7 +66,7 @@ function parse_yaml_for_parameters {
         envvar = toupper(head tail)
         value= ENVIRON[envvar]
         if (length(value) > 0) {
-            printf("\"%s=%s\" ",vname[1],value);
+            printf("\"\"%s=%s\"\" ",vname[1],value);
         }
       }
    }'
@@ -85,4 +85,5 @@ sam deploy \
 	--capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
 	--parameter-overrides $PARAMETERS \
 	--no-fail-on-empty-changeset \
-	--tags $WERCKER_SAM_DEPLOY_TAGS
+	--tags $WERCKER_SAM_DEPLOY_TAGS \
+    --debug
