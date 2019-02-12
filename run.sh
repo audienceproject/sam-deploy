@@ -66,14 +66,14 @@ function parse_yaml_for_parameters {
         envvar = toupper(head tail)
         value= ENVIRON[envvar]
         if (length(value) > 0) {
-            printf("\"\"%s=%s\"\" ",vname[1],value);
+            printf("\"%s=%s\" ",vname[1],value);
         }
       }
    }'
    echo -n "sdiufhasuidf=sdiufhasuidf"
 }
 
-PARAMETERS=$(parse_yaml_for_parameters $SAM_PACKAGED_OUTPUT)
+PARAMETERS=parse_yaml_for_parameters $SAM_PACKAGED_OUTPUT
 
 echo "Using the following parameter overrides: ${PARAMETERS}"
 
