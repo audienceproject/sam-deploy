@@ -66,24 +66,26 @@ function parse_yaml_for_parameters {
         envvar = toupper(head tail)
         value= ENVIRON[envvar]
         if (length(value) > 0) {
-            printf("\"%s=%s\" ",vname[1],value);
+            printf("%s=%s\t",vname[1],value);
         }
       }
    }'
    echo -n "sdiufhasuidf=sdiufhasuidf"
 }
 
-PARAMETERS=parse_yaml_for_parameters $SAM_PACKAGED_OUTPUT
+PARAMETERS=$(parse_yaml_for_parameters $SAM_PACKAGED_OUTPUT)
 
 echo "Using the following parameter overrides: ${PARAMETERS}"
-
+${IFS+"false"} && unset oldifs || oldifs="$IFS"    # correctly store IFS.
+IFS=$'\t'
 ## actually deploy the CF template
 sam deploy \
     --region $WERCKER_SAM_DEPLOY_REGION \
-	--template-file $SAM_PACKAGED_OUTPUT \
-	--stack-name $WERCKER_SAM_DEPLOY_STACK_NAME \
-	--capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
-	--parameter-overrides $PARAMETERS \
-	--no-fail-on-empty-changeset \
-	--tags $WERCKER_SAM_DEPLOY_TAGS \
+	--template-file $SAM_PACKAGED_OUTPUT    \
+	--stack-name $WERCKER_SAM_DEPLOY_STACK_NAME  \
+	--capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM   \
+	--parameter-overrides   $PARAMETERS  \
+	--no-fail-on-empty-changeset    \
+	--tags  $WERCKER_SAM_DEPLOY_TAGS    \
     --debug
+${oldifs+"false"} && unset IFS || IFS="$oldifs"    # restore IFS.
