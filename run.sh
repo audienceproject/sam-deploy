@@ -84,8 +84,8 @@ sam deploy \
 	--template-file $SAM_PACKAGED_OUTPUT    \
 	--stack-name $WERCKER_SAM_DEPLOY_STACK_NAME  \
 	--capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM   \
-	--parameter-overrides   $PARAMETERS  \
-	--no-fail-on-empty-changeset    \
-	--tags  ${WERCKER_SAM_DEPLOY_TAGS// /\t}    \
+	--parameter-overrides $PARAMETERS  \
+	--no-fail-on-empty-changeset \
+	--tags ${WERCKER_SAM_DEPLOY_TAGS// /\\t} \
     --debug
 ${oldifs+"false"} && unset IFS || IFS="$oldifs"    # restore IFS.
