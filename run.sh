@@ -78,6 +78,7 @@ PARAMETERS=$(parse_yaml_for_parameters $SAM_PACKAGED_OUTPUT)
 echo "Using the following parameter overrides: ${PARAMETERS}"
 ${IFS+"false"} && unset oldifs || oldifs="$IFS"    # correctly store IFS.
 IFS=$'\t'
+TAGS=$(sed -e $'s# #\t#g' <<< $WERCKER_SAM_DEPLOY_TAGS)
 ## actually deploy the CF template
 sam deploy \
     --region $WERCKER_SAM_DEPLOY_REGION \
@@ -86,6 +87,6 @@ sam deploy \
 	--capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM   \
 	--parameter-overrides $PARAMETERS  \
 	--no-fail-on-empty-changeset \
-	--tags ${WERCKER_SAM_DEPLOY_TAGS// /\\t} \
+	--tags $TAGS \
     --debug
 ${oldifs+"false"} && unset IFS || IFS="$oldifs"    # restore IFS.
