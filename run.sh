@@ -76,9 +76,10 @@ function parse_yaml_for_parameters {
 PARAMETERS=$(parse_yaml_for_parameters $SAM_PACKAGED_OUTPUT)
 
 echo "Using the following parameter overrides: ${PARAMETERS}"
+
+TAGS=$(echo $WERCKER_SAM_DEPLOY_TAGS | sed -e $'s# #\t#g')
 ${IFS+"false"} && unset oldifs || oldifs="$IFS"    # correctly store IFS.
 IFS=$'\t'
-TAGS=$(sed -e $'s# #\t#g' <<< $WERCKER_SAM_DEPLOY_TAGS)
 ## actually deploy the CF template
 sam deploy \
     --region $WERCKER_SAM_DEPLOY_REGION \
