@@ -89,5 +89,5 @@ sam deploy \
 	--parameter-overrides $PARAMETERS  \
 	--no-fail-on-empty-changeset \
 	--tags $TAGS \
-    --debug
+  --debug || exit 1
 ${oldifs+"false"} && unset IFS || IFS="$oldifs"    # restore IFS.
