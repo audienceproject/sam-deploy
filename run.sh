@@ -70,7 +70,7 @@ function parse_yaml_for_parameters {
         }
       }
    }'
-   echo -n "sdiufhasuidf=sdiufhasuidf"
+   echo "sdiufhasuidf=sdiufhasuidf\c"
 }
 
 PARAMETERS=$(parse_yaml_for_parameters $SAM_PACKAGED_OUTPUT)
