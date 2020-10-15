@@ -83,10 +83,10 @@ IFS=$'\t'
 ## actually deploy the CF template
 sam deploy \
     --region $WERCKER_SAM_DEPLOY_REGION \
-	--template-file $SAM_PACKAGED_OUTPUT    \
-	--stack-name $WERCKER_SAM_DEPLOY_STACK_NAME  \
-	--capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM   \
-	--parameter-overrides $PARAMETERS  \
+	--template-file $SAM_PACKAGED_OUTPUT \
+	--stack-name $WERCKER_SAM_DEPLOY_STACK_NAME \
+	--capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
+	--parameter-overrides $PARAMETERS \
 	--no-fail-on-empty-changeset \
 	--tags $TAGS \
   --debug || exit 1
