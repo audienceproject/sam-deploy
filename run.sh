@@ -27,6 +27,7 @@ SAM_PACKAGED_OUTPUT=sam-packaged.yaml
 
 ## package and upload swagger + lambda files
 sam package \
+  --region $WERCKER_SAM_DEPLOY_REGION
 	--template-file "$WERCKER_SAM_DEPLOY_TEMPLATE" \
 	--output-template-file "$SAM_PACKAGED_OUTPUT" \
 	--s3-bucket "$WERCKER_SAM_DEPLOY_S3_BUCKET" \
