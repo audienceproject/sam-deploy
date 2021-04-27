@@ -1,5 +1,5 @@
 name: sam-deploy
-version: 1.0.25
+version: 1.0.26
 summary: Deploys sam template
 keywords:
   - sam
